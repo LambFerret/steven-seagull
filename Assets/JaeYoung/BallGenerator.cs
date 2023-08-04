@@ -36,6 +36,7 @@ public class BallGenerator : MonoBehaviour
 
     public void DestroyBall()
     {
+        if (GeneratedBalls.Count < 1) return;
         GeneratedBalls[0].Destroy();
         GeneratedBalls.RemoveAt(0);
     }
