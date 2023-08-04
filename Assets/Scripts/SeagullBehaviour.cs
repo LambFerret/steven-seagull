@@ -9,7 +9,7 @@ public class SeagullBehaviour : MonoBehaviour
     public float animationDuration = 0.5f;
     public float animationHeight = 2f;
     [Header("Information")] public State currentState = State.Idle;
-    private Vector3 _bodyOriginalScale;
+    private Vector3 _bodyOriginalPosition;
     private Tween _bodyTween;
     private bool _isAnimating;
 
@@ -22,7 +22,7 @@ public class SeagullBehaviour : MonoBehaviour
 
     private void Start()
     {
-        _bodyOriginalScale = transform.localScale;
+        _bodyOriginalPosition = transform.position;
     }
 
     private void Update()
@@ -37,11 +37,11 @@ public class SeagullBehaviour : MonoBehaviour
     private void StartBodyAnimation()
     {
         currentState = State.Pressed;
-        _bodyTween = transform.DOMoveY(_bodyOriginalScale.y + animationHeight, animationDuration)
+        _bodyTween = transform.DOMoveY(_bodyOriginalPosition.y + animationHeight, animationDuration)
             .SetEase(Ease.InOutCirc)
             .OnComplete(() =>
             {
-                transform.DOMoveY(_bodyOriginalScale.y, animationDuration).SetEase(Ease.InOutCirc);
+                transform.DOMoveY(_bodyOriginalPosition.y, animationDuration).SetEase(Ease.InOutCirc);
             });
     }
 
