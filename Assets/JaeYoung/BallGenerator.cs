@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BallGenerator : MonoBehaviour
 {
-    public GameObject ball;
+    public List<GameObject> ball;
     public Transform spawnPoint;
-    public List<Ball> balls;
+    public List<Ball> GeneratedBalls;
     /// <summary> 공에 넣을 문장 단어 List </summary>
     public List<string> line = new List<string>();
     public int index;
@@ -30,13 +30,13 @@ public class BallGenerator : MonoBehaviour
     public void GenerateBall()
     {
         if (index >= line.Count) return;
-        balls.Add(Instantiate(ball, spawnPoint.position,transform.rotation,transform).GetComponent<Ball>());
-        balls[balls.Count-1].Init(line[index++]);
+        GeneratedBalls.Add(Instantiate(ball[Random.Range(0,ball.Count)], spawnPoint.position,transform.rotation,transform).GetComponent<Ball>());
+        GeneratedBalls[GeneratedBalls.Count-1].Init(line[index++]);
     }
 
     public void DestroyBall()
     {
-        balls[0].Destroy();
-        balls.RemoveAt(0);
+        GeneratedBalls[0].Destroy();
+        GeneratedBalls.RemoveAt(0);
     }
 }
