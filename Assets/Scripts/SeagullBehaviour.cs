@@ -10,6 +10,7 @@ public class SeagullBehaviour : MonoBehaviour
     private Vector3 _bodyOriginalPosition;
     private Tween _bodyTween;
     private bool _isAnimating;
+    private Rigidbody2D rb;
 
     public enum State
     {
@@ -21,6 +22,7 @@ public class SeagullBehaviour : MonoBehaviour
     private void Start()
     {
         _bodyOriginalPosition = transform.position;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -28,7 +30,8 @@ public class SeagullBehaviour : MonoBehaviour
         if (Input.GetKeyDown(keyCode) && !IsAnimating())
         {
             _bodyTween.Kill();
-            StartBodyAnimation();
+            // StartBodyAnimation();
+            StartRigidAnimation();
         }
     }
 
@@ -42,6 +45,18 @@ public class SeagullBehaviour : MonoBehaviour
                 transform.DOMoveY(_bodyOriginalPosition.y, animationDuration).SetEase(Ease.InOutCirc);
             });
     }
+
+
+    private void StartRigidAnimation() {
+        currentState = State.Pressed;
+        _bodyTween = rb.DOMoveY(_bodyOriginalPosition.y + animationHeight, animationDuration)
+            .SetEase(Ease.InOutCirc)
+            .OnComplete(() =>
+            {
+                transform.DOMoveY(_bodyOriginalPosition.y, animationDuration).SetEase(Ease.InOutCirc);
+            });
+    }
+
 
     private bool IsAnimating()
     {
