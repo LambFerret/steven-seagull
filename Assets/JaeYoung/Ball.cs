@@ -12,11 +12,15 @@ public class Ball : MonoBehaviour
     {
         Word = word;
         GetComponentInChildren<TextMeshPro>().text = word;
-        Debug.Log(word);
+        GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
     }
 
     public void Destroy()
     {
         Destroy(gameObject);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
     }
 }
