@@ -350,7 +350,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB0B4\uAC00 \uC65C\uC548\uB3FC"
+  m_text: "\uB0B4\uAC00 \uC65C\uC54A\uB418"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02d1fce8e027c42079a52c62f1a83e29, type: 2}
   m_sharedMaterial: {fileID: -3896335951961720297, guid: 02d1fce8e027c42079a52c62f1a83e29, type: 2}
@@ -4062,9 +4062,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previousTimeText: {fileID: 1955526200}
   currentTimeText: {fileID: 1827918433}
-  leftStar: {fileID: 127445765}
-  middleStar: {fileID: 1274730025}
-  rightStar: {fileID: 1184400059}
+  leftStar: {fileID: 127445766}
+  middleStar: {fileID: 1274730026}
+  rightStar: {fileID: 1184400060}
 --- !u!114 &1647706942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4883,7 +4883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasCertainSeagullPosition: 0
-  spacing: 3
+  spacing: 1.5
   sentence: "\uC548\uB155 \uB0B4\uC774\uB984\uC740 \uC120\uBC14"
   translatedSentence:
   - Hello

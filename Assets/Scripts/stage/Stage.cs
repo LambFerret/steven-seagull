@@ -92,6 +92,9 @@ namespace stage
             int index = 0;
             foreach (var bird in _birds)
             {
+                var birdText = bird.transform.Find("Head").Find("KeyCode").GetComponent<TextMeshPro>();
+                var keyCode = bird.GetComponent<SeagullBehaviour>().keyCode;
+                birdText.text = keyCode.ToString();
                 var birdPos = bird.transform.position;
                 bird.gameObject.transform.position = new Vector3(_birdOriginX + (_birdWidth + spacing) * index,
                     birdPos.y, birdPos.z);
@@ -123,6 +126,7 @@ namespace stage
                 clearedStar = 1;
             }
 
+            Debug.Log("Star : " + clearedStar);
             victoryPanel.gameObject.SetActive(true);
             victoryPanel.Init(clearedStar, clearedTime);
         }
@@ -136,6 +140,7 @@ namespace stage
 
         public void SaveData(PlayerData data)
         {
+            Debug.Log("when stage save " + isCleared);
             if (isCleared)
             {
                 data.ClearedLevels[level - 1] = true;
@@ -144,7 +149,7 @@ namespace stage
                     data.ClearedTimes[level - 1] = clearedTime;
                 }
 
-                if (clearedStar < data.ClearedStar[level - 1])
+                if (clearedStar > data.ClearedStar[level - 1])
                 {
                     data.ClearedStar[level - 1] = clearedStar;
                 }

@@ -1,6 +1,8 @@
+using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SeagullBehaviour : MonoBehaviour
 {
@@ -16,19 +18,25 @@ public class SeagullBehaviour : MonoBehaviour
     private Rigidbody2D _rb;
     private TextMeshProUGUI _keyCode;
     private SpriteRenderer _spriteRenderer;
+    private TextMeshPro _text;
 
     public enum State
     {
         Idle,
-        Pressed,
-        Flying
+        Pressed
+    }
+
+    private void Awake()
+    {
+        _text = GameObject.Find("KeyCode").GetComponent<TextMeshPro>();
     }
 
     private void Start()
     {
         _bodyOriginalPosition = transform.position;
         _rb = GetComponent<Rigidbody2D>();
-        GameObject.Find("KeyCode").GetComponent<TextMeshPro>().text = keyCode.ToString();
+        _text.text = keyCode.ToString();
+        Debug.Log("??? "+_text.text);
         _spriteRenderer = transform.Find("Body").GetComponent<SpriteRenderer>();
     }
 

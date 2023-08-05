@@ -95,6 +95,7 @@ namespace player
                 dataPersistenceObj.SaveData(_gameData);
             }
 
+            Debug.Log("save called");
             _dataHandler.Save(_gameData);
         }
 

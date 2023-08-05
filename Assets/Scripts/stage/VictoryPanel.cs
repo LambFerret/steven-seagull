@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using player;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
@@ -18,10 +16,16 @@ namespace stage
 
         [Header("Game Objects")] public Text previousTimeText;
         public Text currentTimeText;
-        public GameObject leftStar;
-        public GameObject middleStar;
-        public GameObject rightStar;
+        public Image leftStar;
+        public Image middleStar;
+        public Image rightStar;
 
+        private void Awake()
+        {
+            leftStar.color = Color.clear;
+            middleStar.color = Color.clear;
+            rightStar.color = Color.clear;
+        }
 
         public void SetLevel(int level)
         {
@@ -37,11 +41,11 @@ namespace stage
             if (score >= 3) StartCoroutine(ShakeStar(rightStar));
         }
 
-        private static IEnumerator ShakeStar(GameObject star)
+        private static IEnumerator ShakeStar(Image star)
         {
-            star.SetActive(true);
+            star.color = Color.white;
             star.transform.DOShakeScale(0.5F, 0.5F, 10, 90, false);
-            yield return new WaitForSeconds(0.5F);
+            yield return new WaitForSeconds(2F);
         }
 
         private void Update()
