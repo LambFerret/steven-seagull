@@ -6,7 +6,6 @@ public class SeagullBehaviour : MonoBehaviour
     [Header("Settings")] public KeyCode keyCode;
     public float animationDuration = 0.5f;
     public float animationHeight = 2f;
-    public float animationAccelDuration = 0.01F;
     [Header("Information")] public State currentState = State.Idle;
     private Vector3 _bodyOriginalPosition;
     private Tween _bodyTween;
@@ -36,18 +35,8 @@ public class SeagullBehaviour : MonoBehaviour
         }
     }
 
-    private void StartBodyAnimation()
+    private void StartRigidAnimation()
     {
-        currentState = State.Pressed;
-        _bodyTween = transform.DOMoveY(_bodyOriginalPosition.y + animationHeight, animationAccelDuration)
-            .SetEase(Ease.Linear)
-            .OnComplete(() =>
-            {
-                transform.DOMoveY(_bodyOriginalPosition.y, animationDuration).SetEase(Ease.Linear);
-            });
-    }
-
-    private void StartRigidAnimation() {
         currentState = State.Pressed;
         _bodyTween = _rb.DOMoveY(_bodyOriginalPosition.y + animationHeight, animationDuration)
             .SetEase(Ease.InOutCirc)
@@ -56,7 +45,6 @@ public class SeagullBehaviour : MonoBehaviour
                 transform.DOMoveY(_bodyOriginalPosition.y, animationDuration).SetEase(Ease.InOutCirc);
             });
     }
-
 
     private bool IsAnimating()
     {
