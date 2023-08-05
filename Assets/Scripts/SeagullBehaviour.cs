@@ -36,7 +36,6 @@ public class SeagullBehaviour : MonoBehaviour
         _bodyOriginalPosition = transform.position;
         _rb = GetComponent<Rigidbody2D>();
         _text.text = keyCode.ToString();
-        Debug.Log("??? "+_text.text);
         _spriteRenderer = transform.Find("Body").GetComponent<SpriteRenderer>();
     }
 
