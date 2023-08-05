@@ -4,8 +4,9 @@ using TMPro;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
-{
-    /// <summary> ÇöÀç °øÀÇ °¡Áö°í ÀÖ´Â ´Ü¾î </summary>
+{   
+    public SpriteRenderer tipSprite;
+    /// <summary> ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½Ü¾ï¿½ </summary>
     public string Word;
 
     public void Init(string word)
@@ -21,6 +22,9 @@ public class Ball : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+        
+        Color newColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+        GetComponent<SpriteRenderer>().color = newColor;
+        tipSprite.color = newColor;
     }
 }
