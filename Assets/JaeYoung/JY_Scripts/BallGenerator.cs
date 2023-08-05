@@ -51,7 +51,7 @@ public class BallGenerator : MonoBehaviour
         ballGameObject.GetComponent<Rigidbody2D>().mass *= Random.Range(0.5f, 1f);
         material = ballGameObject.GetComponent<Rigidbody2D>().sharedMaterial;
         material.friction = 5f;
-        material.bounciness = Random.Range(0.5f, 1f);
+        material.bounciness = 0.7f;
         ballGameObject.GetComponent<Rigidbody2D>().sharedMaterial = material;
         GeneratedBalls.Add(ballGameObject);
 
