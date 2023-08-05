@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9019926233314055638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.76880497, y: -0.4492728, z: 0.036603726}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -76,11 +76,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3bf62b275f8874592791260f314715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 7525477941772564110, guid: 8d748fc276c51864d9b941b4d2eb89a0, type: 3}
-  spawnPoint: {fileID: 0}
-  balls: []
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: -0.0000012237579
+      inSlope: -0.00008413117
+      outSlope: -0.00008413117
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.10022676
+      value: -0.000009655952
+      inSlope: Infinity
+      outSlope: 1.1114019
+      tangentMode: 71
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1.1114019
+      outSlope: 1.1114019
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  ball:
+  - {fileID: 7525477941772564110, guid: 8d748fc276c51864d9b941b4d2eb89a0, type: 3}
+  - {fileID: 7525477941772564110, guid: e77e8dd447472304aad11433174eae73, type: 3}
+  - {fileID: 7525477941772564110, guid: e38ae00f5786df149a39304da804dc26, type: 3}
+  bomb: {fileID: 7525477941772564110, guid: 71f10551910a70542b3686ea09a837c1, type: 3}
+  spawnPoint: {fileID: 1438288107}
+  GeneratedBalls: []
+  FakeBalls: []
   line:
   - Hello
   - short
   - longlonglonglong
+  - Hello
+  - Hello
+  - Hello
+  - Hello
+  - Hello
+  - Hello
+  - Hello
+  - Hello
+  - Hello
+  - Hello
+  - Hello
+  - Hello
+  - Hello
+  - Hello
+  - Hello
+  - Hello
+  - Hello
+  - Hello
+  - Hello
+  - Hello
+  - Hello
+  - Hello
+  - Hello
+  - Hello
+  - Hello
+  - Hello
+  - Hello
   index: 0
