@@ -1,13 +1,11 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Obstacles : MonoBehaviour
 {
-    [Tooltip("ù??° ????? ????? ????? ???")]
-    public Vector2[] route;
-
+    [Tooltip("첫번째 좌표는 자신의 좌표로 바뀜")] public Vector2[] route;
     private int ptr;
     public float duration = 2f;
 

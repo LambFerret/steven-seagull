@@ -1,14 +1,14 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    /// <summary> ���� ���� ������ �ִ� �ܾ� </summary>
+    /// <summary> 현재 공의 가지고 있는 단어 </summary>
     public string word;
 
-    /// <summary> ���۽� �θ� ball�� ��üȭ�ϰ� �ܾ� ����Ʈ���� �ܾ �־��ְ� ���� �־���</summary>
+    /// <summary> 시작시 부모가 ball을 객체화하고 단어 리스트에서 단어를 넣어주고 색도 넣어줌</summary>
     /// <param name="word"></param>
     public void Init(string word)
     {
@@ -17,13 +17,13 @@ public class Ball : MonoBehaviour
         GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
     }
 
-    /// <summary> ���������� ������, �θ𿡼� ȣ���ϱ� ������ ������ ���� </summary>
+    /// <summary> 골인했으면 삭제만, 부모에서 호출하기 때문에 삭제만 해줌 </summary>
     public void Goal()
     {
         Destroy(gameObject);
     }
 
-    /// <summary> �ı��Ǿ����� �ٽ� ���� </summary>
+    /// <summary> 파괴되었으면 다시 생성 </summary>
     public void Destroy()
     {
         transform.parent.GetComponent<BallGenerator>().GenerateBall(word);

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.UIElements;
@@ -22,6 +22,11 @@ public class BallGenerator : MonoBehaviour
     /// <summary> ���� ���� ���� �ܾ� List </summary>
     [Header("Info")] private Vector3 _spawnPoint;
 
+    /// <summary> 공에 넣을 문장 단어 List </summary>
+    public List<string> line = new List<string>();
+
+    public int index;
+
     private void Start()
     {
         _spawnPoint = spawnPoint.transform.position;
@@ -37,7 +42,7 @@ public class BallGenerator : MonoBehaviour
         }
     }
 
-    /// <summary> �� ���� </summary>
+    /// <summary> 공 생성 </summary>
     public IEnumerator GenerateBall(string word)
     {
         var ballGameObject = Instantiate(ball[Random.Range(0, ball.Count)], _spawnPoint, transform.rotation, transform)
@@ -56,7 +61,7 @@ public class BallGenerator : MonoBehaviour
         Debug.Log(material.bounciness + " / " + ballGameObject.GetComponent<Rigidbody2D>().mass);
     }
 
-    /// <summary> ��¥ �� ���� </summary>
+    /// <summary> 가짜 공 생성 </summary>
     public void GenerateFake()
     {
         var selectedBall = ball[Random.Range(0, ball.Count)];
@@ -66,13 +71,13 @@ public class BallGenerator : MonoBehaviour
         FakeBalls.Add(fakeBall);
     }
 
-    /// <summary> ��ź ���� </summary>
+    /// <summary> 폭탄 생성 </summary>
     public void GenerateBomb()
     {
         Instantiate(bomb, _spawnPoint, transform.rotation, transform).GetComponent<Bomb>();
     }
 
-    /// <summary> ���� ���������� ȣ��, �����ϸ� ����Ʈ���� ����/ball���� Goal����, �ε��� ���� </summary>
+    /// <summary> 공이 골인했으면 호출, 골인하면 리스트에서 삭제/ball에서 Goal실행, 인덱스 증가 </summary>
     public void GoalIn()
     {
         if (GeneratedBalls.Count < 1) return;
@@ -80,7 +85,7 @@ public class BallGenerator : MonoBehaviour
         GeneratedBalls.RemoveAt(0);
     }
 
-    /// <summary> ���� �ı��Ǿ����� ȣ��, destroy���� </summary>
+    /// <summary> 공이 파괴되었으면 호출, destroy실행 </summary>
     public void DestroyBall()
     {
         if (GeneratedBalls.Count < 1) return;
