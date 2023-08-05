@@ -946,7 +946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f886d860c5994de44bda0d51d3182bee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineSegmentSize: 0.01
+  lineSegmentSize: 0.05
   lineWidth: 0.67
   useCustomEndWidth: 0
   endWidth: 0.1
