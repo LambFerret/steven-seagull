@@ -46,7 +46,7 @@ namespace stage
             victoryPanel.SetLevel(level);
             victoryPanel.gameObject.SetActive(false);
             _birds = GameObject.FindGameObjectsWithTag("Seagull");
-            _birdWidth = _birds[0].transform.GetComponent<SpriteRenderer>().bounds.size.x;
+            _birdWidth = _birds[0].transform.localScale.x;
             _birdOriginX = _birds[0].transform.position.x;
             if (!hasCertainSeagullPosition) RelocateBirds();
             levelText.text = "Level : " + level;
