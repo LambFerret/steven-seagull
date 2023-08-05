@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyCode: 113
   animationDuration: 0.39848
-  animationHeight: 3
+  animationHeight: 1.1
   currentState: 0
 --- !u!70 &394224640223105424
 CapsuleCollider2D:
