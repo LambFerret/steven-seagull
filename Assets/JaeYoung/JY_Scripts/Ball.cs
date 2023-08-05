@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    /// <summary> ÇöÀç °øÀÇ °¡Áö°í ÀÖ´Â ´Ü¾î </summary>
+    /// <summary> ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½Ü¾ï¿½ </summary>
     public string word;
 
-    /// <summary> ½ÃÀÛ½Ã ºÎ¸ð°¡ ballÀ» °´Ã¼È­ÇÏ°í ´Ü¾î ¸®½ºÆ®¿¡¼­ ´Ü¾î¸¦ ³Ö¾îÁÖ°í »öµµ ³Ö¾îÁÜ</summary>
+    /// <summary> ï¿½ï¿½ï¿½Û½ï¿½ ï¿½Î¸ï¿½ ballï¿½ï¿½ ï¿½ï¿½Ã¼È­ï¿½Ï°ï¿½ ï¿½Ü¾ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½Ü¾î¸¦ ï¿½Ö¾ï¿½ï¿½Ö°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½</summary>
     /// <param name="word"></param>
     public void Init(string word)
     {
@@ -17,16 +17,16 @@ public class Ball : MonoBehaviour
         GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
     }
 
-    /// <summary> °ñÀÎÇßÀ¸¸é »èÁ¦¸¸, ºÎ¸ð¿¡¼­ È£ÃâÇÏ±â ¶§¹®¿¡ »èÁ¦¸¸ ÇØÁÜ </summary>
+    /// <summary> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Î¸ð¿¡¼ï¿½ È£ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ </summary>
     public void Goal()
     {
         Destroy(gameObject);
     }
 
-    /// <summary> ÆÄ±«µÇ¾úÀ¸¸é ´Ù½Ã »ý¼º </summary>
+    /// <summary> ï¿½Ä±ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ </summary>
     public void Destroy()
     {
-        transform.parent.GetComponent<BallGenerator>().GenerateBall();
+        transform.parent.GetComponent<BallGenerator>().GenerateBall(word);
         Destroy(gameObject);
     }
 

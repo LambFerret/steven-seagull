@@ -4,13 +4,13 @@ namespace player
     {
         public bool[] ClearedLevels;
         public int[] ClearedTimes;
-        public int[] ClearedDeaths;
+        public int[] ClearedStar;
 
         public PlayerData()
         {
             ClearedLevels = new bool[10];
             ClearedTimes = new int[10];
-            ClearedDeaths = new int[10];
+            ClearedStar = new int[10];
         }
     }
 }

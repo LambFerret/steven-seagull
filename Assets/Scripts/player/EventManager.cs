@@ -24,11 +24,11 @@ namespace player
             OnScoreChanged?.Invoke(value);
         }
 
-        public event Action OnDeath;
+        public event Action OnClear;
 
-        public void Death()
+        public void Clear()
         {
-            OnDeath?.Invoke();
+            OnClear?.Invoke();
         }
     }
 }

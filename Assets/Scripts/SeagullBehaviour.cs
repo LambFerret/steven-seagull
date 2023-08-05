@@ -1,4 +1,5 @@
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 public class SeagullBehaviour : MonoBehaviour
@@ -6,11 +7,15 @@ public class SeagullBehaviour : MonoBehaviour
     [Header("Settings")] public KeyCode keyCode;
     public float animationDuration = 0.5f;
     public float animationHeight = 2f;
+    [Header("Sprite")] public Sprite idleSprite;
+    public Sprite pressedSprite;
     [Header("Information")] public State currentState = State.Idle;
     private Vector3 _bodyOriginalPosition;
     private Tween _bodyTween;
     private bool _isAnimating;
     private Rigidbody2D _rb;
+    private TextMeshProUGUI _keyCode;
+    private SpriteRenderer _spriteRenderer;
 
     public enum State
     {
@@ -23,6 +28,8 @@ public class SeagullBehaviour : MonoBehaviour
     {
         _bodyOriginalPosition = transform.position;
         _rb = GetComponent<Rigidbody2D>();
+        GameObject.Find("KeyCode").GetComponent<TextMeshPro>().text = keyCode.ToString();
+        _spriteRenderer = transform.Find("Body").GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -30,9 +37,10 @@ public class SeagullBehaviour : MonoBehaviour
         if (Input.GetKeyDown(keyCode) && !IsAnimating())
         {
             _bodyTween.Kill();
-            // StartBodyAnimation();
             StartRigidAnimation();
         }
+
+        _spriteRenderer.sprite = !IsAnimating() ? idleSprite : pressedSprite;
     }
 
     private void StartRigidAnimation()

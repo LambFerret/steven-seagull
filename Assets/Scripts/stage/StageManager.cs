@@ -10,14 +10,10 @@ namespace stage
     {
         public bool[] clearedLevels;
         public int[] clearedTimes;
-        public int[] clearedDeaths;
+        public int[] clearedStar;
 
         public GameObject stagePrefab;
 
-        public void NewGame()
-        {
-            clearedLevels = new bool[10];
-        }
 
         private void Start()
         {
@@ -33,7 +29,7 @@ namespace stage
                 {
                     image.color = Color.green;
                     text.text = string.Format(
-                        $"Level {level}\n{clearedDeaths[i]} deaths\n Clear time : {clearedTimes[i]} seconds");
+                        $"Level {level}\n{clearedStar[i]} deaths\n Clear time : {clearedTimes[i]} seconds");
                 }
                 else
                 {
@@ -49,12 +45,19 @@ namespace stage
         {
             clearedLevels = data.ClearedLevels;
             clearedTimes = data.ClearedTimes;
-            clearedDeaths = data.ClearedDeaths;
+            clearedStar = data.ClearedStar;
         }
 
         public void SaveData(PlayerData data)
         {
             data.ClearedLevels = clearedLevels;
+        }
+
+        public void NewGameClearData()
+        {
+            DataPersistenceManager.Instance.NewGame();
+            DataPersistenceManager.Instance.SaveGame();
+            SceneManager.LoadScene("StageSelect");
         }
     }
 }

@@ -1,79 +1,93 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.UIElements;
 using UnityEngine;
 
 public class BallGenerator : MonoBehaviour
 {
-    public AnimationCurve curve;
+    [Header("Settings")] public float splitForce = 19;
+    public float angle = 0.2f;
+
+    [Header("Game Objects")]
+    // public AnimationCurve curve;
     public List<GameObject> ball;
+
     public GameObject bomb;
-    public Transform spawnPoint;
+    public GameObject spawnPoint;
     public List<Ball> GeneratedBalls;
     public List<Ball> FakeBalls;
     private PhysicsMaterial2D material;
-    /// <summary> °ø¿¡ ³ÖÀ» ¹®Àå ´Ü¾î List </summary>
-    public List<string> line = new List<string>();
-    public int index;
 
-    // Start is called before the first frame update
-    void Start()
+    /// <summary> ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ü¾ï¿½ List </summary>
+    [Header("Info")] private Vector3 _spawnPoint;
+
+    private void Start()
     {
-        index = 0;
-        spawnPoint = transform.GetChild(0);
+        _spawnPoint = spawnPoint.transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SpawnBall(string sentence)
     {
-
+        List<string> words = new List<string>(sentence.Split(' '));
+        int index = 0;
+        while (index < words.Count)
+        {
+            StartCoroutine(GenerateBall(words[index++]));
+        }
     }
 
-    /// <summary> °ø »ý¼º </summary>
-    public void GenerateBall()
+    /// <summary> ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ </summary>
+    public IEnumerator GenerateBall(string word)
     {
-        if (index >= line.Count) return;
-        GeneratedBalls.Add(Instantiate(ball[Random.Range(0, ball.Count)], spawnPoint.position, transform.rotation, transform).GetComponent<Ball>());
-        GeneratedBalls[GeneratedBalls.Count - 1].Init(line[index]);
-        GeneratedBalls[GeneratedBalls.Count - 1].GetComponent<Rigidbody2D>().mass *= Random.Range(0.5f,1f);
-        material = GeneratedBalls[GeneratedBalls.Count - 1].GetComponent<Rigidbody2D>().sharedMaterial;
+        var ballGameObject = Instantiate(ball[Random.Range(0, ball.Count)], _spawnPoint, transform.rotation, transform)
+            .GetComponent<Ball>();
+        ballGameObject.Init(word);
+        ballGameObject.GetComponent<Rigidbody2D>().mass *= Random.Range(0.5f, 1f);
+        material = ballGameObject.GetComponent<Rigidbody2D>().sharedMaterial;
         material.friction = 0f;
         material.bounciness = Random.Range(0.5f, 1f);
-        GeneratedBalls[GeneratedBalls.Count - 1].GetComponent<Rigidbody2D>().sharedMaterial = material;
+        ballGameObject.GetComponent<Rigidbody2D>().sharedMaterial = material;
+        GeneratedBalls.Add(ballGameObject);
 
-        Debug.Log(material.bounciness.ToString()+""+ GeneratedBalls[GeneratedBalls.Count - 1].GetComponent<Rigidbody2D>().mass.ToString());
+        ballGameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(1F, Random.Range(-angle, angle)) * splitForce);
+        yield return new WaitForSeconds(3f);
+
+        Debug.Log(material.bounciness + " / " + ballGameObject.GetComponent<Rigidbody2D>().mass);
     }
 
-    /// <summary> °¡Â¥ °ø »ý¼º </summary>
+    /// <summary> ï¿½ï¿½Â¥ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ </summary>
     public void GenerateFake()
     {
-        FakeBalls.Add(Instantiate(ball[Random.Range(0, ball.Count)], spawnPoint.position, transform.rotation, transform).GetComponent<Ball>());
-        FakeBalls[FakeBalls.Count - 1].Init("FAKE");
-        FakeBalls[FakeBalls.Count - 1].tag = "Fake";
+        var selectedBall = ball[Random.Range(0, ball.Count)];
+        var fakeBall = Instantiate(selectedBall, _spawnPoint, transform.rotation, transform).GetComponent<Ball>();
+        fakeBall.Init("FAKE");
+        fakeBall.tag = "Fake";
+        FakeBalls.Add(fakeBall);
     }
 
-    /// <summary> ÆøÅº »ý¼º </summary>
+    /// <summary> ï¿½ï¿½Åº ï¿½ï¿½ï¿½ï¿½ </summary>
     public void GenerateBomb()
     {
-        Instantiate(bomb, spawnPoint.position, transform.rotation, transform).GetComponent<Bomb>();
+        Instantiate(bomb, _spawnPoint, transform.rotation, transform).GetComponent<Bomb>();
     }
 
-    /// <summary> °øÀÌ °ñÀÎÇßÀ¸¸é È£Ãâ, °ñÀÎÇÏ¸é ¸®½ºÆ®¿¡¼­ »èÁ¦/ball¿¡¼­ Goal½ÇÇà, ÀÎµ¦½º Áõ°¡ </summary>
+    /// <summary> ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½/ballï¿½ï¿½ï¿½ï¿½ Goalï¿½ï¿½ï¿½ï¿½, ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ </summary>
     public void GoalIn()
     {
         if (GeneratedBalls.Count < 1) return;
         GeneratedBalls[0].Goal();
         GeneratedBalls.RemoveAt(0);
-        index++;
     }
 
-    /// <summary> °øÀÌ ÆÄ±«µÇ¾úÀ¸¸é È£Ãâ, destroy½ÇÇà </summary>
+    /// <summary> ï¿½ï¿½ï¿½ï¿½ ï¿½Ä±ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½, destroyï¿½ï¿½ï¿½ï¿½ </summary>
     public void DestroyBall()
     {
         if (GeneratedBalls.Count < 1) return;
         GeneratedBalls[0].Destroy();
         GeneratedBalls.RemoveAt(0);
     }
+
     float CurveWeightedRandom(AnimationCurve curve)
     {
         return curve.Evaluate(Random.value);
