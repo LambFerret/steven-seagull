@@ -85,6 +85,7 @@ namespace stage
             if (!_isEnded) _time += Time.deltaTime;
             timer.text = _time.ToString("F1");
             score.text = "score : " + _score;
+            Debug.Log("CURSOR");
         }
 
         private void RelocateBirds()
