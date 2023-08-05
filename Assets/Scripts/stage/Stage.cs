@@ -24,7 +24,6 @@ namespace stage
         public int clearedStar;
 
         [Header("Game Objects")] public TextMeshProUGUI levelText;
-        public TextMeshProUGUI deathCount;
         public TextMeshProUGUI timer;
         public TextMeshProUGUI score;
         public BallGenerator ballGenerator;
@@ -50,7 +49,6 @@ namespace stage
             _birdOriginX = _birds[0].transform.position.x;
             if (!hasCertainSeagullPosition) RelocateBirds();
             levelText.text = "Level : " + level;
-            deathCount.text = "" + clearedStar;
 
             ballGenerator.SpawnBall(sentence);
 

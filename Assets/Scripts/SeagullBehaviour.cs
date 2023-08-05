@@ -57,7 +57,7 @@ public class SeagullBehaviour : MonoBehaviour
             .SetEase(Ease.InOutCirc)
             .OnComplete(() =>
             {
-                transform.DOMoveY(_bodyOriginalPosition.y, animationDuration).SetEase(Ease.InOutCirc);
+                _rb.DOMoveY(_bodyOriginalPosition.y, animationDuration).SetEase(Ease.InOutCirc);
             });
     }
 

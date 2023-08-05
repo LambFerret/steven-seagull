@@ -13,13 +13,14 @@ public class BallGenerator : MonoBehaviour
     // public AnimationCurve curve;
     public List<GameObject> ball;
 
+    public GameObject ballPlaceHolder;
+
     public GameObject bomb;
     public GameObject spawnPoint;
     public List<Ball> GeneratedBalls;
     public List<Ball> FakeBalls;
     private PhysicsMaterial2D material;
 
-    /// <summary> ���� ���� ���� �ܾ� List </summary>
     [Header("Info")] private Vector3 _spawnPoint;
 
     /// <summary> 공에 넣을 문장 단어 List </summary>
@@ -45,8 +46,8 @@ public class BallGenerator : MonoBehaviour
     /// <summary> 공 생성 </summary>
     public IEnumerator GenerateBall(string word)
     {
-        var ballGameObject = Instantiate(ball[Random.Range(0, ball.Count)], _spawnPoint, transform.rotation, transform)
-            .GetComponent<Ball>();
+        var ballGameObject = Instantiate(ball[Random.Range(0, ball.Count)], _spawnPoint, transform.rotation,
+                ballPlaceHolder.transform).GetComponent<Ball>();
         ballGameObject.Init(word);
         ballGameObject.GetComponent<Rigidbody2D>().mass *= Random.Range(0.5f, 1f);
         material = ballGameObject.GetComponent<Rigidbody2D>().sharedMaterial;
@@ -65,7 +66,7 @@ public class BallGenerator : MonoBehaviour
     public void GenerateFake()
     {
         var selectedBall = ball[Random.Range(0, ball.Count)];
-        var fakeBall = Instantiate(selectedBall, _spawnPoint, transform.rotation, transform).GetComponent<Ball>();
+        var fakeBall = Instantiate(selectedBall, _spawnPoint, transform.rotation, ballPlaceHolder.transform).GetComponent<Ball>();
         fakeBall.Init("FAKE");
         fakeBall.tag = "Fake";
         FakeBalls.Add(fakeBall);
