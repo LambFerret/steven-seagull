@@ -80,11 +80,9 @@ MonoBehaviour:
   angle: 0.2
   ball:
   - {fileID: 7525477941772564110, guid: 8d748fc276c51864d9b941b4d2eb89a0, type: 3}
-  - {fileID: 7525477941772564110, guid: e77e8dd447472304aad11433174eae73, type: 3}
-  - {fileID: 7525477941772564110, guid: e38ae00f5786df149a39304da804dc26, type: 3}
   bomb: {fileID: 7525477941772564110, guid: 71f10551910a70542b3686ea09a837c1, type: 3}
   spawnPoint: {fileID: 1438288107}
   GeneratedBalls: []
   FakeBalls: []
-  sentence: 
+  line: []
   index: 0

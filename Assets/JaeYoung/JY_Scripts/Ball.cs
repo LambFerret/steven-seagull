@@ -4,9 +4,11 @@ using TMPro;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
-{
+{   
     /// <summary> 현재 공의 가지고 있는 단어 </summary>
     public string word;
+
+    public SpriteRenderer tipSprite;
 
     /// <summary> 시작시 부모가 ball을 객체화하고 단어 리스트에서 단어를 넣어주고 색도 넣어줌</summary>
     /// <param name="word"></param>
