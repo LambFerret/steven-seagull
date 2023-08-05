@@ -29,7 +29,7 @@ namespace stage
                 {
                     image.color = Color.green;
                     text.text = string.Format(
-                        $"Level {level}\n{clearedStar[i]} deaths\n Clear time : {clearedTimes[i]} seconds");
+                        $"Level {level}\n{clearedStar[i]} Star! \n time : {clearedTimes[i]} sec");
                 }
                 else
                 {
@@ -50,7 +50,6 @@ namespace stage
 
         public void SaveData(PlayerData data)
         {
-            data.ClearedLevels = clearedLevels;
         }
 
         public void NewGameClearData()
