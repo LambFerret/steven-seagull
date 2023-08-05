@@ -11,7 +11,7 @@ namespace stage
     {
         private Dictionary<string, string> _dictionary;
         private List<string> _translatedSentence;
-        public TextMeshPro text;
+        public TextMeshProUGUI text;
         public bool[] isCorrect;
 
         public void SetDictionary(Dictionary<string, string> dictionary)

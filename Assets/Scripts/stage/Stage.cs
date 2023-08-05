@@ -29,7 +29,7 @@ namespace stage
         public TextMeshProUGUI score;
         public BallGenerator ballGenerator;
         public BallReceiver ballReceiver;
-        public TextMeshPro text;
+        public TextMeshProUGUI text;
         public VictoryPanel victoryPanel;
 
         private GameObject[] _birds;
