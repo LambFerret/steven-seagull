@@ -30,7 +30,7 @@ namespace stage
         private void Start()
         {
             _birds = GameObject.FindGameObjectsWithTag("Seagull");
-            _birdWidth = _birds[0].transform.Find("Body").GetComponent<SpriteRenderer>().bounds.size.x;
+            _birdWidth = _birds[0].transform.Find("Head").GetComponent<SpriteRenderer>().bounds.size.x;
             _birdOriginX = _birds[0].transform.position.x;
             if (!hasCertainSeagullPosition) RelocateBirds();
             levelText.text = "Level : " + level;
