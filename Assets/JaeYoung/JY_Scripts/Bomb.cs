@@ -5,15 +5,16 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
+    Animator animator;
     public void Init()
     {
         GetComponentInChildren<TextMeshPro>().text = "BOMB!";
 
     }
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        Init();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -27,13 +28,15 @@ public class Bomb : MonoBehaviour
         {
             Debug.Log("BOOM!");
             collision.transform.GetComponent<Ball>().Destroy();
-            Destroy(gameObject);
+            animator.SetTrigger("Boom");
+            //Destroy(gameObject);
         }
         if (collision.transform.tag == "Fake")
         {
             Debug.Log("BOOM!");
             Destroy(collision.gameObject);
-            Destroy(gameObject);
+            animator.SetTrigger("Boom");
+            //Destroy(gameObject);
         }
     }
 }

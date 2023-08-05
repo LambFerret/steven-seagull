@@ -20,10 +20,12 @@ public class Enemy : MonoBehaviour
 
         if (closestBall != null)
         {
+            
             // 공격 범위 안에 들어온 경우에만 플레이어를 바라보고 공격합니다.
             float distanceToPlayer = Vector2.Distance(transform.position, closestBall.transform.position);
             if (distanceToPlayer <= attackRange)
             {
+                transform.localScale = new Vector3(-1, -1, 1);
                 // 플레이어의 방향을 바라보도록 적 캐릭터를 회전시킵니다.
                 Vector2 direction = closestBall.transform.position - transform.position;
                 angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -33,7 +35,7 @@ public class Enemy : MonoBehaviour
                 float maxAngle = (angle + spreadAngle) * Mathf.Deg2Rad;
                 float minAngle = (angle - spreadAngle) * Mathf.Deg2Rad;
 
-                Debug.DrawRay( this.transform.position, direction, Color.red);
+                Debug.DrawRay(this.transform.position, direction, Color.red);
                 Debug.DrawRay(this.transform.position, attackRange * new Vector2(Mathf.Cos(maxAngle), Mathf.Sin(maxAngle)), Color.blue);
                 Debug.DrawRay(this.transform.position, attackRange * new Vector2(Mathf.Cos(minAngle), Mathf.Sin(minAngle)), Color.blue);
                 // 공격 타이머 업데이트

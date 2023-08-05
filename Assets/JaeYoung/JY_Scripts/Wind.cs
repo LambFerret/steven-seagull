@@ -17,7 +17,7 @@ public class Wind : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        collision.gameObject.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position) * 50);
+        collision.gameObject.GetComponent<Rigidbody2D>().AddForce((collision.transform.position - transform.position) * 50000f);
         Destroy(gameObject);
     }
 }
