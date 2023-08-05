@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class SeagullBehaviour : MonoBehaviour
 {
     [Header("Settings")] public KeyCode keyCode;
-    public float animationDuration = 0.5f;
+    float animationDuration = 0.3256f;
     float animationHeight = 1.53f;
     [Header("Sprite")] public Sprite idleSprite;
     public Sprite pressedSprite;
@@ -54,10 +54,10 @@ public class SeagullBehaviour : MonoBehaviour
     {
         currentState = State.Pressed;
         _bodyTween = _rb.DOMoveY(_bodyOriginalPosition.y + animationHeight, animationDuration)
-            .SetEase(Ease.InOutCirc)
+            .SetEase(Ease.OutCirc)
             .OnComplete(() =>
             {
-                _rb.DOMoveY(_bodyOriginalPosition.y, animationDuration).SetEase(Ease.InOutCirc);
+                _rb.DOMoveY(_bodyOriginalPosition.y, animationDuration).SetEase(Ease.OutCirc);
             });
     }
 
