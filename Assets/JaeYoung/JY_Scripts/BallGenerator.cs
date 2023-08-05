@@ -33,21 +33,23 @@ public class BallGenerator : MonoBehaviour
         _spawnPoint = spawnPoint.transform.position;
     }
 
-    public void SpawnBall(string sentence)
+    public IEnumerator SpawnBall(string sentence)
     {
         List<string> words = new List<string>(sentence.Split(' '));
         int index = 0;
         while (index < words.Count)
         {
-            StartCoroutine(GenerateBall(words[index++]));
+            Debug.Log("CURSOR");
+            GenerateBall(words[index++]);
+            if (index % 2 == 0) yield return new WaitForSeconds(4F);
         }
     }
 
     /// <summary> 공 생성 </summary>
-    public IEnumerator GenerateBall(string word)
+    public void GenerateBall(string word)
     {
         var ballGameObject = Instantiate(ball[Random.Range(0, ball.Count)], _spawnPoint, transform.rotation,
-                ballPlaceHolder.transform).GetComponent<Ball>();
+            ballPlaceHolder.transform).GetComponent<Ball>();
         ballGameObject.Init(word);
         ballGameObject.GetComponent<Rigidbody2D>().mass *= Random.Range(0.5f, 1f);
         material = ballGameObject.GetComponent<Rigidbody2D>().sharedMaterial;
@@ -57,7 +59,6 @@ public class BallGenerator : MonoBehaviour
         GeneratedBalls.Add(ballGameObject);
 
         ballGameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(1F, Random.Range(-angle, angle)) * splitForce);
-        yield return new WaitForSeconds(3f);
 
         Debug.Log(material.bounciness + " / " + ballGameObject.GetComponent<Rigidbody2D>().mass);
     }
@@ -66,7 +67,8 @@ public class BallGenerator : MonoBehaviour
     public void GenerateFake()
     {
         var selectedBall = ball[Random.Range(0, ball.Count)];
-        var fakeBall = Instantiate(selectedBall, _spawnPoint, transform.rotation, ballPlaceHolder.transform).GetComponent<Ball>();
+        var fakeBall = Instantiate(selectedBall, _spawnPoint, transform.rotation, ballPlaceHolder.transform)
+            .GetComponent<Ball>();
         fakeBall.Init("FAKE");
         fakeBall.tag = "Fake";
         FakeBalls.Add(fakeBall);

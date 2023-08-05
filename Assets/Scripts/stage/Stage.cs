@@ -50,7 +50,7 @@ namespace stage
             if (!hasCertainSeagullPosition) RelocateBirds();
             levelText.text = "Level : " + level;
 
-            ballGenerator.SpawnBall(sentence);
+            StartCoroutine(ballGenerator.SpawnBall(sentence));
 
             _words = new List<string>(sentence.Split(' '));
             MakeDictionary();
