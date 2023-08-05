@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyCode: 113
   animationDuration: 0.39848
-  animationHeight: 3.2
+  animationHeight: 1.5
   idleSprite: {fileID: 21300000, guid: b62076bc2a0c74bc29229a9474f93e18, type: 3}
   pressedSprite: {fileID: 21300000, guid: c2a89922346ee4c14b1929b72a00186d, type: 3}
   currentState: 0
