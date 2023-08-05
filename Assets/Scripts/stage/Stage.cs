@@ -97,6 +97,21 @@ namespace stage
                 bird.gameObject.transform.position = new Vector3(_birdOriginX + (_birdWidth + spacing) * index,
                     birdPos.y, birdPos.z);
                 index++;
+
+                Color color;
+                if(index % 2 == 0) {
+                    ColorUtility.TryParseHtmlString("#E28418FF", out color);
+                    birdText.color = color;
+                } else {
+                    ColorUtility.TryParseHtmlString("#328BE0FF", out color);
+                    birdText.color = color;
+                }
+
+                // if(keyCode == KeyCode.Q || keyCode == KeyCode.W || keyCode == KeyCode.E || keyCode == KeyCode.R) {
+                //     birdText.color = new Color32(32, 89, 89, 100);
+                // } else if (keyCode == KeyCode.U || keyCode == KeyCode.I || keyCode == KeyCode.O || keyCode == KeyCode.P) {
+                //     birdText.color = new Color32(232, 54, 85, 100);
+                // }
             }
         }
 

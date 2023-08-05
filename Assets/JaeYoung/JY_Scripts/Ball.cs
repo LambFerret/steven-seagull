@@ -28,7 +28,9 @@ public class Ball : MonoBehaviour
     /// <summary> 파괴되었으면 다시 생성 </summary>
     public void Destroy()
     {
-        transform.parent.gameObject.GetComponent<BallGenerator>().GenerateBall(word);
+        // transform.parent.gameObject.GetComponent<BallGenerator>().GenerateBall(word);
+        FindObjectOfType<BallGenerator>().GenerateBall(word);
+
         Destroy(gameObject);
     }
 

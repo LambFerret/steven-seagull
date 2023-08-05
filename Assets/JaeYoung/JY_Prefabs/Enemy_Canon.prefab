@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 178921553975339654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,10 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 5
-  attackRange: 5
-  attackRate: 2
-  spreadAngle: 0
-  bullet: {fileID: 7525477941772564110, guid: 11e9e392f28c15243b250e2d99723e2f, type: 3}
+  attackRange: 8
+  attackRate: 4
+  spreadAngle: 60
+  bullet: {fileID: 7525477941772564110, guid: 71f10551910a70542b3686ea09a837c1, type: 3}
   angle: 0
 --- !u!95 &8946838333947493014
 Animator:
