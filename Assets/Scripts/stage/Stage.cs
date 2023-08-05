@@ -124,7 +124,7 @@ namespace stage
                 clearedStar = 1;
             }
 
-            Debug.Log("Star : " + clearedStar);
+            SFXPlayer.Instance.Play("Clear");
             victoryPanel.gameObject.SetActive(true);
             victoryPanel.Init(clearedStar, clearedTime);
         }

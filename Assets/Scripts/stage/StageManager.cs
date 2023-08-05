@@ -38,6 +38,7 @@ namespace stage
                 }
 
                 button.onClick.AddListener(() => { SceneManager.LoadScene(level); });
+                button.onClick.AddListener(() => { SFXPlayer.Instance.Play("Goal"); });
             }
         }
 
