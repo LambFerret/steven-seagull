@@ -1,14 +1,14 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    /// <summary> ÇöÀç °øÀÇ °¡Áö°í ÀÖ´Â ´Ü¾î </summary>
+    /// <summary> í˜„ì¬ ê³µì˜ ê°€ì§€ê³  ìˆëŠ” ë‹¨ì–´ </summary>
     public string word;
 
-    /// <summary> ½ÃÀÛ½Ã ºÎ¸ğ°¡ ballÀ» °´Ã¼È­ÇÏ°í ´Ü¾î ¸®½ºÆ®¿¡¼­ ´Ü¾î¸¦ ³Ö¾îÁÖ°í »öµµ ³Ö¾îÁÜ</summary>
+    /// <summary> ì‹œì‘ì‹œ ë¶€ëª¨ê°€ ballì„ ê°ì²´í™”í•˜ê³  ë‹¨ì–´ ë¦¬ìŠ¤íŠ¸ì—ì„œ ë‹¨ì–´ë¥¼ ë„£ì–´ì£¼ê³  ìƒ‰ë„ ë„£ì–´ì¤Œ</summary>
     /// <param name="word"></param>
     public void Init(string word)
     {
@@ -17,13 +17,13 @@ public class Ball : MonoBehaviour
         GetComponent<SpriteRenderer>().color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
     }
 
-    /// <summary> °ñÀÎÇßÀ¸¸é »èÁ¦¸¸, ºÎ¸ğ¿¡¼­ È£ÃâÇÏ±â ¶§¹®¿¡ »èÁ¦¸¸ ÇØÁÜ </summary>
+    /// <summary> ê³¨ì¸í–ˆìœ¼ë©´ ì‚­ì œë§Œ, ë¶€ëª¨ì—ì„œ í˜¸ì¶œí•˜ê¸° ë•Œë¬¸ì— ì‚­ì œë§Œ í•´ì¤Œ </summary>
     public void Goal()
     {
         Destroy(gameObject);
     }
 
-    /// <summary> ÆÄ±«µÇ¾úÀ¸¸é ´Ù½Ã »ı¼º </summary>
+    /// <summary> íŒŒê´´ë˜ì—ˆìœ¼ë©´ ë‹¤ì‹œ ìƒì„± </summary>
     public void Destroy()
     {
         transform.parent.GetComponent<BallGenerator>().GenerateBall();

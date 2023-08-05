@@ -1,11 +1,11 @@
-using DG.Tweening;
+ï»¿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Obstacles : MonoBehaviour
 {
-    [Tooltip("Ã¹¹øÂ° ÁÂÇ¥´Â ÀÚ½ÅÀÇ ÁÂÇ¥·Î ¹Ù²ñ")]
+    [Tooltip("ì²«ë²ˆì§¸ ì¢Œí‘œëŠ” ìì‹ ì˜ ì¢Œí‘œë¡œ ë°”ë€œ")]
     public Vector2[] route;
     private int ptr;
     public float duration = 2f;

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -12,7 +12,7 @@ public class BallGenerator : MonoBehaviour
     public List<Ball> GeneratedBalls;
     public List<Ball> FakeBalls;
     private PhysicsMaterial2D material;
-    /// <summary> °ø¿¡ ³ÖÀ» ¹®Àå ´Ü¾î List </summary>
+    /// <summary> ê³µì— ë„£ì„ ë¬¸ì¥ ë‹¨ì–´ List </summary>
     public List<string> line = new List<string>();
     public int index;
 
@@ -29,7 +29,7 @@ public class BallGenerator : MonoBehaviour
 
     }
 
-    /// <summary> °ø »ı¼º </summary>
+    /// <summary> ê³µ ìƒì„± </summary>
     public void GenerateBall()
     {
         if (index >= line.Count) return;
@@ -44,7 +44,7 @@ public class BallGenerator : MonoBehaviour
         Debug.Log(material.bounciness.ToString()+""+ GeneratedBalls[GeneratedBalls.Count - 1].GetComponent<Rigidbody2D>().mass.ToString());
     }
 
-    /// <summary> °¡Â¥ °ø »ı¼º </summary>
+    /// <summary> ê°€ì§œ ê³µ ìƒì„± </summary>
     public void GenerateFake()
     {
         FakeBalls.Add(Instantiate(ball[Random.Range(0, ball.Count)], spawnPoint.position, transform.rotation, transform).GetComponent<Ball>());
@@ -52,13 +52,13 @@ public class BallGenerator : MonoBehaviour
         FakeBalls[FakeBalls.Count - 1].tag = "Fake";
     }
 
-    /// <summary> ÆøÅº »ı¼º </summary>
+    /// <summary> í­íƒ„ ìƒì„± </summary>
     public void GenerateBomb()
     {
         Instantiate(bomb, spawnPoint.position, transform.rotation, transform).GetComponent<Bomb>();
     }
 
-    /// <summary> °øÀÌ °ñÀÎÇßÀ¸¸é È£Ãâ, °ñÀÎÇÏ¸é ¸®½ºÆ®¿¡¼­ »èÁ¦/ball¿¡¼­ Goal½ÇÇà, ÀÎµ¦½º Áõ°¡ </summary>
+    /// <summary> ê³µì´ ê³¨ì¸í–ˆìœ¼ë©´ í˜¸ì¶œ, ê³¨ì¸í•˜ë©´ ë¦¬ìŠ¤íŠ¸ì—ì„œ ì‚­ì œ/ballì—ì„œ Goalì‹¤í–‰, ì¸ë±ìŠ¤ ì¦ê°€ </summary>
     public void GoalIn()
     {
         if (GeneratedBalls.Count < 1) return;
@@ -67,7 +67,7 @@ public class BallGenerator : MonoBehaviour
         index++;
     }
 
-    /// <summary> °øÀÌ ÆÄ±«µÇ¾úÀ¸¸é È£Ãâ, destroy½ÇÇà </summary>
+    /// <summary> ê³µì´ íŒŒê´´ë˜ì—ˆìœ¼ë©´ í˜¸ì¶œ, destroyì‹¤í–‰ </summary>
     public void DestroyBall()
     {
         if (GeneratedBalls.Count < 1) return;
