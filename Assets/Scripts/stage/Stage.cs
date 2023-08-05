@@ -46,7 +46,7 @@ namespace stage
             victoryPanel.SetLevel(level);
             victoryPanel.gameObject.SetActive(false);
             _birds = GameObject.FindGameObjectsWithTag("Seagull");
-            _birdWidth = _birds[0].transform.Find("Head").GetComponent<SpriteRenderer>().bounds.size.x;
+            _birdWidth = _birds[0].transform.GetComponent<SpriteRenderer>().bounds.size.x;
             _birdOriginX = _birds[0].transform.position.x;
             if (!hasCertainSeagullPosition) RelocateBirds();
             levelText.text = "Level : " + level;
@@ -85,7 +85,6 @@ namespace stage
             if (!_isEnded) _time += Time.deltaTime;
             timer.text = _time.ToString("F1");
             score.text = "score : " + _score;
-            Debug.Log("CURSOR");
         }
 
         private void RelocateBirds()
