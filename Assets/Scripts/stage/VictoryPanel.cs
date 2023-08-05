@@ -56,7 +56,12 @@ namespace stage
 
 
         public void NextMap()
-        {
+        {   
+            if(_currentMap + 1 > SceneManager.sceneCount) {
+                SceneManager.LoadScene("StageSelect");
+                return;
+            }
+
             SceneManager.LoadScene((_currentMap + 1).ToString());
         }
 
