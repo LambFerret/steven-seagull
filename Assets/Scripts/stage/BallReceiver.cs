@@ -52,7 +52,7 @@ namespace stage
                 string colorTag;
                 if (isCorrect[i])
                 {
-                    colorTag = "<color=#000000>";
+                    colorTag = "<color=#FFFFFF>";
                 }
                 else
                 {
