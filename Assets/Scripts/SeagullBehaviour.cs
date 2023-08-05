@@ -8,7 +8,7 @@ public class SeagullBehaviour : MonoBehaviour
 {
     [Header("Settings")] public KeyCode keyCode;
     public float animationDuration = 0.5f;
-    public float animationHeight = 2f;
+    float animationHeight = 1.53f;
     [Header("Sprite")] public Sprite idleSprite;
     public Sprite pressedSprite;
     [Header("Information")] public State currentState = State.Idle;
