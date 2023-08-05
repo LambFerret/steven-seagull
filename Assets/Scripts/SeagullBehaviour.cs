@@ -11,7 +11,7 @@ public class SeagullBehaviour : MonoBehaviour
     private Vector3 _bodyOriginalPosition;
     private Tween _bodyTween;
     private bool _isAnimating;
-    private Rigidbody2D rb;
+    private Rigidbody2D _rb;
 
     public enum State
     {
@@ -23,7 +23,7 @@ public class SeagullBehaviour : MonoBehaviour
     private void Start()
     {
         _bodyOriginalPosition = transform.position;
-        rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -47,10 +47,9 @@ public class SeagullBehaviour : MonoBehaviour
             });
     }
 
-
     private void StartRigidAnimation() {
         currentState = State.Pressed;
-        _bodyTween = rb.DOMoveY(_bodyOriginalPosition.y + animationHeight, animationDuration)
+        _bodyTween = _rb.DOMoveY(_bodyOriginalPosition.y + animationHeight, animationDuration)
             .SetEase(Ease.InOutCirc)
             .OnComplete(() =>
             {
