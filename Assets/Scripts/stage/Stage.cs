@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using player;
 using TMPro;
 using UnityEngine;
@@ -28,10 +26,10 @@ namespace stage
         public TextMeshProUGUI score;
         public BallGenerator ballGenerator;
         public BallReceiver ballReceiver;
+        public GameObject[] birds;
         public TextMeshProUGUI text;
         public VictoryPanel victoryPanel;
 
-        private GameObject[] _birds;
         private float _birdWidth;
         private float _birdOriginX;
         private float _time;
@@ -44,9 +42,9 @@ namespace stage
         {
             victoryPanel.SetLevel(level);
             victoryPanel.gameObject.SetActive(false);
-            _birds = GameObject.FindGameObjectsWithTag("Seagull");
-            _birdWidth = _birds[0].transform.localScale.x;
-            _birdOriginX = _birds[0].transform.position.x;
+            // birds = GameObject.FindGameObjectsWithTag("Seagull");
+            _birdWidth = birds[0].transform.localScale.x;
+            _birdOriginX = birds[0].transform.position.x;
             if (!hasCertainSeagullPosition) RelocateBirds();
             levelText.text = "Level : " + level;
 
@@ -88,7 +86,7 @@ namespace stage
         private void RelocateBirds()
         {
             int index = 0;
-            foreach (var bird in _birds)
+            foreach (var bird in birds)
             {
                 var birdText = bird.transform.Find("Head").Find("KeyCode").GetComponent<TextMeshPro>();
                 var keyCode = bird.GetComponent<SeagullBehaviour>().keyCode;
