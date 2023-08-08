@@ -5313,10 +5313,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB0B4\uAC00 \uC65C\uC548\uB3FC"
+  m_text: "\uB108\uAC19\uC740 \uC0AC\uB78C \uB9CC\uB098\uC11C \uCC38 \uB2E4\uD589\uC774\uC57C"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 02d1fce8e027c42079a52c62f1a83e29, type: 2}
-  m_sharedMaterial: {fileID: -3896335951961720297, guid: 02d1fce8e027c42079a52c62f1a83e29, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8587b11bc96704cf189e3a4ac5dd68f0, type: 2}
+  m_sharedMaterial: {fileID: 1781715600938528098, guid: 8587b11bc96704cf189e3a4ac5dd68f0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

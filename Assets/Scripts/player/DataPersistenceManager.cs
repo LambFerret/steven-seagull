@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -29,6 +30,11 @@ namespace player
             DontDestroyOnLoad(gameObject);
 
             _dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Z)) SceneManager.LoadScene(0);
         }
 
         private void OnEnable()
